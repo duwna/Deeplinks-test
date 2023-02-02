@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import ru.touchin.deeplink.R
-import ru.touchin.deeplink.ui.RootFragment
+import ru.touchin.deeplink.ui.RootTabFragment
 
 object BottomNavigationUtil {
 
@@ -23,7 +23,7 @@ object BottomNavigationUtil {
         if (newFragment == null) {
             transaction.add(
                 R.id.nav_host_fragment_activity_main,
-                RootFragment.newInstance(RootFragment.NavArgs(tab)),
+                RootTabFragment.newInstance(RootTabFragment.NavArgs(tab)),
                 tabTag
             )
         }

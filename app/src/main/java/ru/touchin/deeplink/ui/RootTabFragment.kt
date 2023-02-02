@@ -6,7 +6,6 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import kotlinx.parcelize.Parcelize
-import ru.touchin.deeplink.MainActivity
 import ru.touchin.deeplink.R
 import ru.touchin.deeplink.databinding.FragmentRootBinding
 import ru.touchin.deeplink.di.AppModule
@@ -19,13 +18,13 @@ import ru.touchin.extensions.args
 import ru.touchin.extensions.withParcelable
 import ru.touchin.roboswag.navigation_base.fragments.viewBinding
 
-class RootFragment : Fragment(R.layout.fragment_root) {
+class RootTabFragment : Fragment(R.layout.fragment_root) {
 
     @Parcelize
     data class NavArgs(val tabType: TabType) : Parcelable
 
     companion object {
-        fun newInstance(args: NavArgs) = RootFragment()
+        fun newInstance(args: NavArgs) = RootTabFragment()
             .withParcelable(DEFAULT_FRAGMENT_ARGS_KEY, args)
     }
 
@@ -47,12 +46,12 @@ class RootFragment : Fragment(R.layout.fragment_root) {
             cicerone.router.navigateTo(Screens.home(HomeFragment.NavArgs(args.tabType)))
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (childFragmentManager.backStackEntryCount == 1) {
-                    (activity as? MainActivity)?.handleBackPress()
-                } else {
+                if (childFragmentManager.backStackEntryCount > 1) {
                     cicerone.router.exit()
+                } else {
+                    (parentFragment as? MainFragment)?.handleBackPressed()
                 }
             }
         })

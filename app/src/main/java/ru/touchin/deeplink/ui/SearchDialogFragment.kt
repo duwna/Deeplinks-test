@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import ru.touchin.deeplink.R
 import ru.touchin.deeplink.databinding.FragmentSearchDialogBinding
 import ru.touchin.deeplink.databinding.ItemSearchSuggestBinding
+import ru.touchin.deeplink.di.AppModule
 import ru.touchin.roboswag.navigation_base.fragments.viewBinding
 
 class SearchDialogFragment : DialogFragment() {
@@ -50,6 +51,7 @@ class SearchDialogFragment : DialogFragment() {
         }
 
         binding.navigateButton.setOnClickListener {
+            AppModule.deepLinkHandler.sendDeeplink(binding.editText.text.toString())
             dismiss()
         }
     }
