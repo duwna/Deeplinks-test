@@ -2,8 +2,9 @@ package ru.touchin.deeplink
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.touchin.deeplink.databinding.ActivityMainBinding
+import ru.touchin.deeplink.navigation.BottomNavigationUtil
+import ru.touchin.deeplink.navigation.TabType
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,8 +15,28 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initBottomNavigation(savedInstanceState)
+    }
 
-        val navView: BottomNavigationView = binding.navView
+    private fun initBottomNavigation(savedInstanceState: Bundle?) {
+        binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
+            BottomNavigationUtil.selectTab(
+                context = applicationContext,
+                fragmentManager = supportFragmentManager,
+                tab = TabType.values().find { it.menuId == menuItem.itemId } ?: error("unknown bottom menu itemId")
+            )
+            true
+        }
 
+        if (savedInstanceState == null) {
+            binding.bottomNavigation.selectedItemId = TabType.CATALOG.menuId
+        }
+    }
+
+    fun handleBackPress() {
+        when (binding.bottomNavigation.selectedItemId) {
+            TabType.CATALOG.menuId -> finish()
+            else -> binding.bottomNavigation.selectedItemId = TabType.CATALOG.menuId
+        }
     }
 }

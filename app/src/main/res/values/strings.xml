@@ -3,4 +3,6 @@
     <string name="title_catalog">Catalog</string>
     <string name="title_cart">Cart</string>
     <string name="title_order">Order</string>
+    <string name="item_list_template">Item %d</string>
+    <string name="details_template">%s\n\nItem %d</string>
 </resources>

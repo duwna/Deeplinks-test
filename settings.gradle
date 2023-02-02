@@ -19,7 +19,8 @@ gradle.ext.roboswag = [
         'kotlin-extensions',
         'navigation-base',
         'logging',
-        'utils'
+        'utils',
+        'deeplink-utils'
 ]
 
 gradle.ext.roboswag.forEach { module ->
