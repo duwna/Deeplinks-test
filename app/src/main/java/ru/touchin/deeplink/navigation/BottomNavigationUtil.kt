@@ -2,6 +2,7 @@ package ru.touchin.deeplink.navigation
 
 import android.content.Context
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import ru.touchin.deeplink.R
 import ru.touchin.deeplink.ui.RootFragment
@@ -34,6 +35,8 @@ object BottomNavigationUtil {
         if (newFragment != null) {
             transaction.show(newFragment).setMaxLifecycle(newFragment, Lifecycle.State.RESUMED)
         }
+
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 
         transaction.commitNow()
     }
