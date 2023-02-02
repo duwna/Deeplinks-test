@@ -14,3 +14,15 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DeeplinkTest"
 include ':app'
+
+gradle.ext.roboswag = [
+        'kotlin-extensions',
+        'navigation-base',
+        'logging',
+        'utils'
+]
+
+gradle.ext.roboswag.forEach { module ->
+    include ":$module"
+    project(":$module").projectDir = file("RoboSwag/$module")
+}

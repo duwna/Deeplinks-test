@@ -11,6 +11,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/RoboSwag/kotlin-extensions" />
+            <option value="$PROJECT_DIR$/RoboSwag/logging" />
+            <option value="$PROJECT_DIR$/RoboSwag/navigation-base" />
+            <option value="$PROJECT_DIR$/RoboSwag/utils" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
