@@ -38,6 +38,14 @@
                 android:layout_marginEnd="16dp"
                 android:layout_gravity="end"/>
 
+            <ImageView
+                android:id="@+id/stop_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_stop_24"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="end"/>
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

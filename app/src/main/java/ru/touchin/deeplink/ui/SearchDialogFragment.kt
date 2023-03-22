@@ -9,25 +9,10 @@ import ru.touchin.deeplink.R
 import ru.touchin.deeplink.databinding.FragmentSearchDialogBinding
 import ru.touchin.deeplink.databinding.ItemSearchSuggestBinding
 import ru.touchin.deeplink.di.AppModule
+import ru.touchin.deeplink.navigation.ExampleDeepLinkUrls
 import ru.touchin.roboswag.navigation_base.fragments.viewBinding
 
 class SearchDialogFragment : DialogFragment() {
-
-    companion object {
-        private val searchSuggests = listOf(
-            "deeplink/catalog",
-            "deeplink/catalog/list",
-            "deeplink/catalog/list/1",
-
-            "deeplink/cart",
-            "deeplink/cart/list",
-            "deeplink/cart/list/1",
-
-            "deeplink/order",
-            "deeplink/order/list",
-            "deeplink/order/list/1",
-        )
-    }
 
     private val binding by viewBinding(FragmentSearchDialogBinding::bind)
 
@@ -37,7 +22,7 @@ class SearchDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchSuggests.forEach { suggest ->
+        ExampleDeepLinkUrls.forEach { suggest ->
             ItemSearchSuggestBinding
                 .inflate(layoutInflater, binding.root, false)
                 .root
