@@ -18,4 +18,4 @@
 
 * WebView
 
-![Пример](example.mov)
+![Пример](example.gif)
